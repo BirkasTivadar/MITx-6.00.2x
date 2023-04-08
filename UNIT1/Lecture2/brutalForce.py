@@ -1,4 +1,4 @@
-from greedy import *
+from UNIT1.Lecture1.greedy import *
 
 
 def maxValue(toConsider: list, available: float):
