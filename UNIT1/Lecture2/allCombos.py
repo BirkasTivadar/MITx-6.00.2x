@@ -55,6 +55,7 @@ def yieldAllCombos(items):
       a list of which item(s) are in each bag.
     """
     N = len(items)
+    # enumerate the 3**N possible combinations
     for i in range(3 ** N):
         bag1 = []
         bag2 = []
