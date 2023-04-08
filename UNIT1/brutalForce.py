@@ -29,7 +29,7 @@ def maxValue(toConsider: list, available: float):
     return result
 
 
-def testMaxValue(foods, maxUnits):
+def testMaxValue(foods: list, maxUnits: float):
     print('Use search tree to allocate {} calories'.format(maxUnits))
     value, taken = maxValue(foods, maxUnits)
     print('Total value of items taken = {}'.format(value))
