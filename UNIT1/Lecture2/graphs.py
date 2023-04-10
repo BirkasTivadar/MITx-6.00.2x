@@ -89,8 +89,8 @@ def buildCityGraph(graphType):
     return graph
 
 
-print('Graph:')
-print(buildCityGraph(Graph))
-print()
-print('DirectedGraph:')
-print(buildCityGraph(DirectedGraph))
+# print('Graph:')
+# print(buildCityGraph(Graph))
+# print()
+# print('DirectedGraph:')
+# print(buildCityGraph(DirectedGraph))
