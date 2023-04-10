@@ -29,4 +29,3 @@ for i in range(len(nodes)):
     for node in edges:
         print(node.getName())
     print()
-
