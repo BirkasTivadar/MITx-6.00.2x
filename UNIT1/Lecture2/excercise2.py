@@ -4,7 +4,7 @@ Consider our representation of permutations of students in a line from Exercise 
 We construct our graph by first adding the following nodes:
 """
 
-from graphs import *
+from graphTest import *
 
 nodes = []
 nodes.append(Node("ABC"))  # nodes[0]
