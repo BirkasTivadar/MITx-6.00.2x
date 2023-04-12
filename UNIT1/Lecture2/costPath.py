@@ -3,7 +3,7 @@ from path import *
 
 
 class WeightedEdge(Edge):
-    def __init__(self, src, dest, weight=0):
+    def __init__(self, src, dest, weight=1):
         Edge.__init__(self, src, dest)
         self.weigth = weight
 
@@ -47,22 +47,22 @@ def testSP():
     for name in ('Boston', 'Providence', 'New York', 'Chicago',
                  'Denver', 'Phoenix', 'Los Angeles'):  # Create 6 nodes
         nodes.append(Node(str(name)))
-    g = DirectedGraph()
+    graph = DirectedGraph()
     for n in nodes:
-        g.addNode(n)
-    g.addEdge(WeightedEdge(nodes[0], nodes[1]))
-    g.addEdge(WeightedEdge(nodes[1], nodes[2]))
-    g.addEdge(WeightedEdge(nodes[2], nodes[3]))
-    g.addEdge(WeightedEdge(nodes[2], nodes[4]))
-    g.addEdge(WeightedEdge(nodes[3], nodes[4]))
-    g.addEdge(WeightedEdge(nodes[3], nodes[5]))
-    g.addEdge(WeightedEdge(nodes[0], nodes[2], 10))
-    g.addEdge(WeightedEdge(nodes[1], nodes[0]))
-    g.addEdge(WeightedEdge(nodes[3], nodes[1]))
-    g.addEdge(WeightedEdge(nodes[4], nodes[0]))
-    sp = shortestPath(g, nodes[0], nodes[5], toPrint=True)
+        graph.addNode(n)
+    graph.addEdge(WeightedEdge(nodes[0], nodes[1]))
+    graph.addEdge(WeightedEdge(nodes[1], nodes[2]))
+    graph.addEdge(WeightedEdge(nodes[2], nodes[3]))
+    graph.addEdge(WeightedEdge(nodes[2], nodes[4]))
+    graph.addEdge(WeightedEdge(nodes[3], nodes[4]))
+    graph.addEdge(WeightedEdge(nodes[3], nodes[5]))
+    graph.addEdge(WeightedEdge(nodes[0], nodes[2], 10))
+    graph.addEdge(WeightedEdge(nodes[1], nodes[0]))
+    graph.addEdge(WeightedEdge(nodes[3], nodes[1]))
+    graph.addEdge(WeightedEdge(nodes[4], nodes[0]))
+    sp = shortestPath(graph, nodes[0], nodes[5], toPrint=True)
     print('Shortest path is', printPath(sp))
-    sp = BFS(g, nodes[0], nodes[5])
+    sp = BFS(graph, nodes[0], nodes[5])
     print('Shortest path found by BFS:', printPath(sp))
 
 
