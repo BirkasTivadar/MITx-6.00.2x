@@ -55,21 +55,23 @@ def greedy_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    sortedValues = sorted(cows.values(), reverse=True)
+    tempCows = cows
+    sortedValues = sorted(tempCows.values(), reverse=True)
 
     result = []
     tempLimit = limit
-    while len(cows) != 0:
+    while len(tempCows) != 0:
         nextTransport = []
         for value in sortedValues:
             if value <= tempLimit:
-                for key in cows.keys():
-                    if cows[key] == value:
+                for key in tempCows.keys():
+                    if tempCows[key] == value:
                         nextTransport.append(key)
                         tempLimit -= value
         result.append(nextTransport)
         for key in nextTransport:
-            del cows[key]
+            del tempCows[key]
+        sortedValues = sorted(tempCows.values(), reverse=True)
         tempLimit = limit
     return result
 
