@@ -49,13 +49,13 @@ def greedy_cow_transport(cows, limit=10):
     Parameters:
     cows - a dictionary of name (string), weight (int) pairs
     limit - weight limit of the spaceship (an int)
-    
+
     Returns:
     A list of lists, with each inner list containing the names of cows
     transported on a particular trip and the overall list containing all the
     trips
     """
-    tempCows = cows
+    tempCows = dict(cows)
     sortedValues = sorted(tempCows.values(), reverse=True)
 
     result = []
@@ -64,10 +64,12 @@ def greedy_cow_transport(cows, limit=10):
         nextTransport = []
         for value in sortedValues:
             if value <= tempLimit:
+                notFind = True
                 for key in tempCows.keys():
-                    if tempCows[key] == value:
+                    if tempCows[key] == value and notFind and key not in nextTransport:
                         nextTransport.append(key)
                         tempLimit -= value
+                        notFind = False
         result.append(nextTransport)
         for key in nextTransport:
             del tempCows[key]
@@ -122,7 +124,7 @@ def brute_force_cow_transport(cows, limit=10):
 # Problem 3
 
 
-def compare_cow_transport_algorithms():
+def compare_cow_transport_algorithms(cows, limit=10):
     """
     Using the data from ps1_cow_data.txt and the specified weight limit, run your
     greedy_cow_transport and brute_force_cow_transport functions here. Use the
@@ -135,8 +137,15 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
+    startGreedy = time.time()
+    greedy = greedy_cow_transport(cows, limit)
+    endGreedy = time.time()
+    print('Greedy return {} trips in {} time'.format(len(greedy), endGreedy - startGreedy))
+
+    startBrute = time.time()
+    brute = brute_force_cow_transport(cows, limit)
+    endBrute = time.time()
+    print('Brute force return {} trips in {} time'.format(len(brute), endBrute - startBrute))
 
 
 """
@@ -145,11 +154,10 @@ Do not submit this along with any of your answers. Uncomment the last two
 lines to print the result of your problem.
 """
 
-# cows = load_cows("ps1_cow_data.txt")
-# limit = 10
+cows = load_cows("ps1_cow_data.txt")
+limit = 10
 
 # print(greedy_cow_transport(cows, limit))
 # print(brute_force_cow_transport(cows, limit))
 
-print(brute_force_cow_transport({'Miss Bella': 25, 'Lotus': 40, 'Milkshake': 40, 'MooMoo': 50, 'Boo': 20, 'Horns': 25},
-                                100))
+compare_cow_transport_algorithms(cows, limit)
