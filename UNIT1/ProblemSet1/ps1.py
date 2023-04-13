@@ -99,11 +99,29 @@ def brute_force_cow_transport(cows, limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    # TODO: Your code here
-    pass
+    rightTrips = []
+    for trip in (get_partitions(cows)):
+        added = True
+        for transport in trip:
+            sum = 0
+            for cow in transport:
+                sum += cows[cow]
+            if sum > limit:
+                added = False
+        if added:
+            rightTrips.append(trip)
+
+    result = rightTrips[0]
+    for rightTrip in rightTrips:
+        if len(rightTrip) < len(result):
+            result = rightTrip
+
+    return result
 
 
 # Problem 3
+
+
 def compare_cow_transport_algorithms():
     """
     Using the data from ps1_cow_data.txt and the specified weight limit, run your
@@ -127,9 +145,11 @@ Do not submit this along with any of your answers. Uncomment the last two
 lines to print the result of your problem.
 """
 
-cows = load_cows("ps1_cow_data.txt")
-limit = 10
-print(cows)
+# cows = load_cows("ps1_cow_data.txt")
+# limit = 10
 
-print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
+# print(greedy_cow_transport(cows, limit))
+# print(brute_force_cow_transport(cows, limit))
+
+print(brute_force_cow_transport({'Miss Bella': 25, 'Lotus': 40, 'Milkshake': 40, 'MooMoo': 50, 'Boo': 20, 'Horns': 25},
+                                100))
