@@ -15,7 +15,7 @@ class WeightedEdge(Edge):
 
 
 def cost(path):
-    result = 0
+    result = ''
     for i in range(len(path)):
         result += str(path[i])
         if i != len(path) - 1:
