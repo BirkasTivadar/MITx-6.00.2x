@@ -40,6 +40,12 @@ class UsualDrunk(Drunk):
         return random.choice(stepChoices)
 
 
+class ColdDrunk(Drunk):
+    def takeStep(self):
+        stepChoices = [(0, 0.9), (0, -1.1), (1, 0), (-1, 0)]
+        return random.choice(stepChoices)
+
+
 class Field(object):
     def __init__(self):
         self.drunks = {}
