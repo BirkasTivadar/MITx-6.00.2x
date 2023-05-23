@@ -1,4 +1,6 @@
 # This is a sample Python script.
+import random
+
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -14,3 +16,13 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+import pylab as pl
+
+dist = []
+
+for i in range(1000000):
+    dist.append(random.gauss(0,30))
+
+pl.hist(dist, 30)
+pl.show()
